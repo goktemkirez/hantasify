@@ -19,3 +19,20 @@ function Nav() {
 }
 
 export default Nav;
+
+// DAHA SONRA MUI DENE
+// import { Tab, Tabs, AppBar, Link } from "@material-ui/core";
+// import Profile from "./pages/Profile";
+// import Playlists from "./pages/Playlists";
+
+// export default function Nav() {
+//   return (
+//     <AppBar>
+//       <Tabs>
+//         <Link title="asd" target="/Profiles" />
+//         <Tab label="Playlists" />
+//         <Tab label="Profile" />
+//       </Tabs>
+//     </AppBar>
+//   );
+// }
