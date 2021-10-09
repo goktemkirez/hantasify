@@ -1,16 +1,16 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
 import Nav from "./Nav";
-import Profile from "./pages/Profile";
-import Playlists from "./pages/Playlists";
 
 function App() {
   return (
-    <Router>
-      <div>
-        <Nav />
+    <div>
+      <Nav />
+    </div>
+  );
+}
 
-        <Switch>
+export default App;
+
+/* <Switch>
           <Route path="/Profile">
             <Profile />
           </Route>
@@ -20,14 +20,4 @@ function App() {
           <Route path="/">
             <Home />
           </Route>
-        </Switch>
-      </div>
-    </Router>
-  );
-
-  function Home() {
-    return <h2>Home</h2>;
-  }
-}
-
-export default App;
+        </Switch> */
