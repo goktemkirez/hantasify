@@ -3,7 +3,7 @@ import authAxios from "../components/axios";
 import { Box, Button, Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
-import ProfileCard from "../components/profileCard";
+import ProfileCard from "../components/ProfileCard";
 
 function Profile() {
   const classes = useStyles();
@@ -33,10 +33,10 @@ function Profile() {
     <div>
       <Container maxWidth="sm" className={classes.containerStyle}>
         <ProfileCard
-          Product={profileData.product}
-          DisplayName={profileData.display_name}
-          Email={profileData.email}
-          Followers={"1"}
+          product={profileData.product}
+          displayName={profileData.display_name}
+          email={profileData.email}
+          followers={"1"}
         />
         <Box component="div" m={1} className={classes.boxStyle}>
           <Button variant="contained" />

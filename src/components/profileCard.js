@@ -35,20 +35,16 @@ export default function ProfileCard(props) {
           color="textSecondary"
           gutterBottom
         >
-          {props.Product}
+          {props.product}
         </Typography>
         <Typography variant="h5" component="h2">
-          {props.DisplayName}
+          {props.displayName}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          {props.Email}
+          {props.email}
         </Typography>
         <Typography variant="body2" component="p">
-          {props.Followers}
-          {" Followed "}
-          {bull}
-          {props.Followers}
-          {" Follower "}
+          {`${props.followers} Followed ${bull} ${props.followers} Follower`}
         </Typography>
       </CardContent>
       <CardActions>
