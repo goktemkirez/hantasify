@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import authAxios from "../components/axios";
+import { Box, Container, makeStyles } from "@material-ui/core";
+import { Skeleton } from "@material-ui/lab";
+
+import PlaylistCard from "../components/PlaylistCard";
 
 function Playlists() {
+  const classes = useStyles();
   const [loading, setLoading] = useState(false);
   const [playlistData, setPlaylistData] = useState([]);
 
@@ -20,18 +25,52 @@ function Playlists() {
       console.log("error", error);
     } finally {
       setLoading(false);
+      // setTimeout(() => {
+      //   setLoading(false);
+      // }, 2000);
     }
   };
 
   return (
     <div>
-      <h1>Playlists will be here!</h1>
-      <h5>{loading}</h5>
-      {playlistData.map((dataItem) => (
-        <h5 key={dataItem.id}>{dataItem.name}</h5>
-      ))}
+      <Container maxWidth="xl" className={classes.containerStyle}>
+        {loading ? (
+          <Box>
+            <Skeleton animation="pulse" width="240">
+              loading
+            </Skeleton>
+          </Box>
+        ) : (
+          <>
+            {playlistData.map((dataItem) => (
+              <PlaylistCard
+                key={dataItem.id}
+                owner={`${dataItem?.owner?.display_name}`}
+                img={`${dataItem?.images[0]?.url}`}
+                name={`${dataItem?.name}`}
+                urlLink={`${dataItem?.external_urls?.spotify}`}
+              />
+            ))}
+          </>
+        )}
+      </Container>
     </div>
   );
 }
+
+const useStyles = makeStyles({
+  containerStyle: {
+    padding: 10,
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+  },
+  boxStyle: {
+    display: "flex",
+    flexDirection: "column",
+    backgroundColor: "#000000",
+    color: "#4DDA63",
+  },
+});
 
 export default Playlists;

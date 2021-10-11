@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import authAxios from "../components/axios";
-import { Box, Button, Container, makeStyles } from "@material-ui/core";
+import { Box, Container, makeStyles } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 
 import ProfileCard from "../components/ProfileCard";
@@ -36,7 +36,7 @@ function Profile() {
     <div>
       <Container maxWidth="sm" className={classes.containerStyle}>
         {loading ? (
-          <Box sizeHeight="50">
+          <Box>
             <Skeleton animation="pulse" width="240">
               loading
             </Skeleton>
