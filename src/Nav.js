@@ -4,6 +4,7 @@ import { Tabs, Tab, AppBar } from "@material-ui/core";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Playlists from "./pages/Playlists";
+import PlaylistDetail from "./pages/PlaylistDetail";
 
 export default function Nav() {
   return (
@@ -38,9 +39,11 @@ export default function Nav() {
       ></Route>
 
       <Switch>
-        <Route path="/Home" component={Home} />
-        <Route path="/Profile" component={Profile} />
-        <Route path="/Playlists" component={Playlists} />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/Home" component={Home} />
+        <Route exact path="/Profile" component={Profile} />
+        <Route exact path="/Playlists" component={Playlists} />
+        <Route exact path="/Playlists/:id" component={PlaylistDetail} />
       </Switch>
     </BrowserRouter>
   );
