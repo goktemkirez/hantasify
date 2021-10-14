@@ -22,16 +22,16 @@ export default function Nav() {
             >
               <Tab label="Home" value="/Home" component={Link} to="/Home" />
               <Tab
-                label="Profile"
-                value="/Profile"
+                label="profile"
+                value="/profile"
                 component={Link}
-                to="/Profile"
+                to="/profile"
               />
               <Tab
                 label="Playlists"
-                value="/Playlists"
+                value="/playlists"
                 component={Link}
-                to="/Playlists"
+                to="/playlists"
               />
             </Tabs>
           </AppBar>
@@ -40,10 +40,10 @@ export default function Nav() {
 
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/Home" component={Home} />
-        <Route exact path="/Profile" component={Profile} />
-        <Route exact path="/Playlists" component={Playlists} />
-        <Route exact path="/Playlists/:id" component={PlaylistDetail} />
+        <Route exact path="/home" component={Home} />
+        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/playlists" component={Playlists} />
+        <Route exact path="/playlists/:id" component={PlaylistDetail} />
       </Switch>
     </BrowserRouter>
   );
