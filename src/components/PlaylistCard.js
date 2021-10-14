@@ -57,8 +57,7 @@ export default function MediaCard(props) {
   );
 }
 
-{
-  /* <Button
+/* <Button
 size="small"
 color="primary"
 onClick={history.push({
@@ -69,4 +68,3 @@ onClick={history.push({
 >
 Go with Push
 </Button> */
-}

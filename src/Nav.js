@@ -20,9 +20,9 @@ export default function Nav() {
                   : false
               }
             >
-              <Tab label="Home" value="/Home" component={Link} to="/Home" />
+              <Tab label="Home" value="/home" component={Link} to="/home" />
               <Tab
-                label="profile"
+                label="Profile"
                 value="/profile"
                 component={Link}
                 to="/profile"
