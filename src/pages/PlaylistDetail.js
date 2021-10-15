@@ -1,11 +1,16 @@
-import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-
 import authAxios from "../components/axios";
+import { Box, Container, makeStyles } from "@material-ui/core";
+import { Skeleton } from "@material-ui/lab";
+import { useParams } from "react-router-dom";
+
+import TrackCard from "../components/TrackCard";
 
 function PlaylistDetail() {
-  const { id } = useParams();
+  const classes = useStyles();
+  const [loading, setLoading] = useState(false);
   const [playlistDetailData, setPlaylistDetailData] = useState([]);
+  const { id } = useParams();
 
   useEffect(() => {
     getPlaylistDetail();
@@ -13,42 +18,61 @@ function PlaylistDetail() {
 
   const getPlaylistDetail = async () => {
     try {
-      // setLoading(true);
+      setLoading(true);
+
       const result = await authAxios.get(`/playlists/${id}`);
-      console.log(result.data.items);
-      setPlaylistDetailData(result.data.items);
+      console.log(result.data?.tracks?.items);
+      setPlaylistDetailData(result.data?.tracks?.items);
       console.log(playlistDetailData);
     } catch (error) {
       console.log("error", error);
     } finally {
-      // setLoading(false);
-      // setTimeout(() => {
-      //   setLoading(false);
-      // }, 2000);
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
     }
   };
 
   return (
     <div>
-      <h2>test - {id}</h2>
+      <Container maxWidth="xl" className={classes.containerStyle}>
+        {loading ? (
+          <Box>
+            <Skeleton animation="pulse" width="240">
+              loading
+            </Skeleton>
+          </Box>
+        ) : (
+          <>
+          {playlistDetailData.map((dataItem) => (
+            <TrackCard
+              key={`${dataItem?.track?.id}`}
+              owner={`${dataItem?.track?.name}`}
+              img={`${dataItem?.track?.album?.images[0]?.url}`}
+              name={`${dataItem?.track?.name}`}
+              trackUrl={`${dataItem?.track?.preview_url}`}
+            />
+          ))}
+          </>
+        )}
+      </Container>
     </div>
   );
 }
 
+const useStyles = makeStyles({
+  containerStyle: {
+    padding: 10,
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+  },
+  boxStyle: {
+    display: "flex",
+    flexDirection: "column",
+    backgroundColor: "#000000",
+    color: "#4DDA63",
+  },
+});
+
 export default PlaylistDetail;
-
-// BARIŞ Playlist sayfasıyla aynı şekilde yapıyorum, aşağıdaki gibi hata veriyor.
-//Nette baktım, function a prop olarak id'yi ver yazıyor da olmuyor.
-
-// src\pages\PlaylistDetail.js
-//   Line 12:6:  React Hook useEffect has a missing dependency: 'getPlaylistDetail'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
-// overrideMethod @ react_devtools_backend.js:2526
-// printWarnings @ webpackHotDevClient.js:138
-// handleWarnings @ webpackHotDevClient.js:143
-// push../node_modules/react-dev-utils/webpackHotDevClient.js.connection.onmessage @ webpackHotDevClient.js:210
-
-// BARIŞ Dün bahsettiğim consoledaki hata da, parametreyle bu sayfaya geçince şöyle çıkıyor:
-
-// Material-UI: The value provided to the Tabs component is invalid.
-// None of the Tabs' children match with `/playlists/37i9dQZF1DZ06evNZXrVBK`.
-// You can provide one of the following values: /home, /profile, /playlists.

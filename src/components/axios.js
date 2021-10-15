@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API_KEY =
-  "BQBKKCdSUyxmdojQ8NuvPNeevVSzVLZrHIFSVxg6yLj_ZTepZyEX4moPa2nlFWeqPuwdy3d436dGFF2NWFKbJDryp8oUYEmxfOkIm5ZD72pg2KZe7BjDDWBsmDYsPt1alhztHS818nVM4tAKcGXo0byqCN7eMWFRWUDbdVufwS10ErZa8M7iP0-8IGo";
+  "BQADyDQuyiP_N14_08QF6TQG8uuXTPKhYhIpg2-xQ7IAqDDvqK4wEaPzEsQj5tKjSBm0L2SkGK8owRbJmKjiIaxXdjXSGudt4MCCNmLyGyMeXgHrt3O8dac303g61MZHE8Hn0UKObRMwAamSHpSQF46I5-mTElk9nBfu2N3xsqSZ8TrwHdeE1aAmk1w";
 
 const authAxios = axios.create({
   baseURL: "https://api.spotify.com/v1",

@@ -24,10 +24,9 @@ function Playlists() {
     } catch (error) {
       console.log("error", error);
     } finally {
-      setLoading(false);
-      // setTimeout(() => {
-      //   setLoading(false);
-      // }, 2000);
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
     }
   };
 
@@ -49,6 +48,7 @@ function Playlists() {
                 img={`${dataItem?.images[0]?.url}`}
                 name={`${dataItem?.name}`}
                 urlLink={`${dataItem?.external_urls?.spotify}`}
+                tracksUrl={dataItem.id}
               />
             ))}
           </>
