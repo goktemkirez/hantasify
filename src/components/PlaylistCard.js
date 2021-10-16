@@ -25,7 +25,9 @@ export default function MediaCard(props) {
 
   return (
     <Card className={classes.root}>
-      <CardActionArea className={classes.cardTop} href={"http://localhost:3000/playlists/" + props.tracksUrl}>
+      <CardActionArea
+        href={`http://localhost:3000/playlists/${props.tracksUrl}`}
+      >
         <CardMedia
           className={classes.media}
           image={props.img}
@@ -47,10 +49,14 @@ export default function MediaCard(props) {
           target="_blank"
           href={props.urlLink}
         >
-          Go
+          Spotify
         </Button>
-        <Button size="small" color="primary">
-          Learn More
+        <Button
+          size="small"
+          color="primary"
+          href={`http://localhost:3000/playlists/${props.tracksUrl}`}
+        >
+          Discover
         </Button>
       </CardActions>
     </Card>

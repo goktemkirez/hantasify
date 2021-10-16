@@ -9,11 +9,23 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
   root: {
-    width: 350,
+    width: 150,
     margin: 10,
   },
+  card: {
+    height: 250,
+  },
   media: {
-    height: 350,
+    height: 150,
+  },
+  content: {
+    width: 120,
+    height: 70,
+    wordWrap: "break-word",
+  },
+  contentTitle: {},
+  contentBody: {
+    bottom: 0,
   },
 });
 
@@ -21,18 +33,26 @@ export default function MediaCard(props) {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
-      <CardActionArea className={classes.cardTop} href={props.trackUrl}>
+    <Card className={classes.root} color="primary">
+      <CardActionArea className={classes.card} href={props.trackUrl}>
         <CardMedia
           className={classes.media}
           image={props.img}
           title="Contemplative Reptile"
         />
-        <CardContent>
-          <Typography gutterBottom variant="h6" component="h2">
+        <CardContent className={classes.content}>
+          <Typography
+            gutterBottom
+            variant="subtitle2"
+            className={classes.contentTitle}
+          >
             {props.name}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            className={classes.contentBody}
+          >
             {props.owner}
           </Typography>
         </CardContent>

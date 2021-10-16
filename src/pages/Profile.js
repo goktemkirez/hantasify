@@ -28,7 +28,7 @@ function Profile() {
       // setLoading(false);
       setTimeout(() => {
         setLoading(false);
-      }, 2000);
+      }, 1000);
     }
   };
 

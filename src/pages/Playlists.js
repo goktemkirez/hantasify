@@ -32,7 +32,7 @@ function Playlists() {
 
   return (
     <div>
-      <Container maxWidth="xl" className={classes.containerStyle}>
+      <Container maxWidth="lg" className={classes.containerStyle}>
         {loading ? (
           <Box>
             <Skeleton animation="pulse" width="240">

@@ -35,7 +35,7 @@ function PlaylistDetail() {
 
   return (
     <div>
-      <Container maxWidth="xl" className={classes.containerStyle}>
+      <Container maxWidth="lg" className={classes.containerStyle}>
         {loading ? (
           <Box>
             <Skeleton animation="pulse" width="240">
@@ -44,15 +44,15 @@ function PlaylistDetail() {
           </Box>
         ) : (
           <>
-          {playlistDetailData.map((dataItem) => (
-            <TrackCard
-              key={`${dataItem?.track?.id}`}
-              owner={`${dataItem?.track?.name}`}
-              img={`${dataItem?.track?.album?.images[0]?.url}`}
-              name={`${dataItem?.track?.name}`}
-              trackUrl={`${dataItem?.track?.preview_url}`}
-            />
-          ))}
+            {playlistDetailData.map((dataItem) => (
+              <TrackCard
+                key={`${dataItem?.track?.id}`}
+                owner={`${dataItem?.track?.album?.artists[0]?.name}`}
+                img={`${dataItem?.track?.album?.images[0]?.url}`}
+                name={`${dataItem?.track?.name}`}
+                trackUrl={`${dataItem?.track?.preview_url}`}
+              />
+            ))}
           </>
         )}
       </Container>
