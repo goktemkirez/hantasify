@@ -19,7 +19,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MediaCard(props) {
+export default function PlaylistCard(props) {
   const classes = useStyles();
   //   let history = useHistory();
 
@@ -62,15 +62,3 @@ export default function MediaCard(props) {
     </Card>
   );
 }
-
-/* <Button
-size="small"
-color="primary"
-onClick={history.push({
-  pathname: "/playlist",
-  search: "?query=abc",
-  state: { detail: "some_value" },
-})}
->
-Go with Push
-</Button> */
