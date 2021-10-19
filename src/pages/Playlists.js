@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import authAxios from "../components/axios";
-import { Box, Container, makeStyles } from "@material-ui/core";
+import { Box, Button, Container, makeStyles } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 
 import PlaylistCard from "../components/PlaylistCard";
@@ -30,6 +30,20 @@ function Playlists() {
     }
   };
 
+  const createPlaylist = async () => {
+    try {
+      const response = await authAxios.post(`/users/ogkirez/playlists`, {
+        name: "New Playlist",
+        description: "New playlist description",
+        public: false,
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.log("error", error);
+    } finally {
+    }
+  };
+
   return (
     <div>
       <Container maxWidth="lg" className={classes.containerStyle}>
@@ -41,6 +55,13 @@ function Playlists() {
           </Box>
         ) : (
           <>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={createPlaylist}
+            >
+              Yeni Playlist
+            </Button>
             {playlistData.map((dataItem) => (
               <PlaylistCard
                 key={dataItem.id}
