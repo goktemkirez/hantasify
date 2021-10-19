@@ -30,6 +30,7 @@ function Playlists() {
     }
   };
 
+  // BARIŞ POST 403, DELETE 400 dönüyor. Spotify kaynaklı mı, izin mi vermiyor yoksa bende mi hata var?
   const createPlaylist = async () => {
     try {
       const response = await authAxios.post(`/users/ogkirez/playlists`, {
@@ -44,8 +45,26 @@ function Playlists() {
     }
   };
 
+  const removeTracks = async () => {
+    try {
+      const response = await authAxios.delete(
+        `/playlists/3mSw18wUFZ8ea6mgSinuzT/tracks`
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.log("error", error);
+    } finally {
+    }
+  };
+
   return (
     <div>
+      <Button variant="contained" color="default" onClick={createPlaylist}>
+        Yeni Playlist
+      </Button>
+      <Button variant="contained" color="secondary" onClick={removeTracks}>
+        Hantasify Test'i Boşalt
+      </Button>
       <Container maxWidth="lg" className={classes.containerStyle}>
         {loading ? (
           <Box>
@@ -55,13 +74,6 @@ function Playlists() {
           </Box>
         ) : (
           <>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={createPlaylist}
-            >
-              Yeni Playlist
-            </Button>
             {playlistData.map((dataItem) => (
               <PlaylistCard
                 key={dataItem.id}
