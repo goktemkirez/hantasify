@@ -1,9 +1,11 @@
 import Nav from "./Nav";
+import Login from "./pages/Login";
 
 function App() {
   return (
     <div>
-      <Nav />
+      {/* <Nav /> */}
+      <Login></Login>
     </div>
   );
 }

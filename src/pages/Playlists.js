@@ -30,7 +30,6 @@ function Playlists() {
     }
   };
 
-  // BARIŞ POST 403, DELETE 400 dönüyor. Spotify kaynaklı mı, izin mi vermiyor yoksa bende mi hata var?
   const createPlaylist = async () => {
     try {
       const result = await authAxios.get(`/me`);
@@ -86,9 +85,9 @@ function Playlists() {
               <PlaylistCard
                 key={playlist.id}
                 owner={playlist?.owner?.display_name} // Burda neden template literal yaptın direk bu şekilde de geçebilrisin propları
-                img={`${playlist?.images[0]?.url}`}
-                name={`${playlist?.name}`}
-                urlLink={`${playlist?.external_urls?.spotify}`}
+                img={playlist?.images[0]?.url} // Olaylara hep ben bununla bişey yaparım ilerde diye bakıyom :D
+                name={playlist?.name}
+                urlLink={playlist?.external_urls?.spotify}
                 tracksUrl={playlist.id}
                 onDeleteClick={() => {
                   removeTracks(playlist.id);
