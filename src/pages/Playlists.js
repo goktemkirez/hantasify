@@ -33,11 +33,15 @@ function Playlists() {
   // BARIŞ POST 403, DELETE 400 dönüyor. Spotify kaynaklı mı, izin mi vermiyor yoksa bende mi hata var?
   const createPlaylist = async () => {
     try {
-      const response = await authAxios.post(`/users/ogkirez/playlists`, {
-        name: "New Playlist",
-        description: "New playlist description",
-        public: false,
-      });
+      const result = await authAxios.get(`/me`);
+      const response = await authAxios.post(
+        `/users/${result.data.id}/playlists`,
+        {
+          name: "New Playlist",
+          description: "New playlist description",
+          public: false,
+        }
+      );
       console.log(response.data);
     } catch (error) {
       console.log("error", error);
@@ -45,10 +49,14 @@ function Playlists() {
     }
   };
 
-  const removeTracks = async () => {
+  const removeTracks = async (playlistId) => {
+    // https://developer.spotify.com/documentation/general/guides/working-with-playlists/#following-and-unfollowing-a-playlist
+    // they say "We have no endpoint for deleting a playlist in the Web API"
+    // Burası biraz karışık şimdilik dokunma başka bir şeye bakalım
+    // ama eğer ki karta bi fonksiyon koycaksam ve bu fonksiyon da o playlistin id'si ile request atıcaksa bu şekilde implement etmek gerekiyor
     try {
       const response = await authAxios.delete(
-        `/playlists/3mSw18wUFZ8ea6mgSinuzT/tracks`
+        `/playlists/${playlistId}/tracks`
       );
       console.log(response.data);
     } catch (error) {
@@ -74,14 +82,17 @@ function Playlists() {
           </Box>
         ) : (
           <>
-            {playlistData.map((dataItem) => (
+            {playlistData.map((playlist) => (
               <PlaylistCard
-                key={dataItem.id}
-                owner={`${dataItem?.owner?.display_name}`}
-                img={`${dataItem?.images[0]?.url}`}
-                name={`${dataItem?.name}`}
-                urlLink={`${dataItem?.external_urls?.spotify}`}
-                tracksUrl={dataItem.id}
+                key={playlist.id}
+                owner={playlist?.owner?.display_name} // Burda neden template literal yaptın direk bu şekilde de geçebilrisin propları
+                img={`${playlist?.images[0]?.url}`}
+                name={`${playlist?.name}`}
+                urlLink={`${playlist?.external_urls?.spotify}`}
+                tracksUrl={playlist.id}
+                onDeleteClick={() => {
+                  removeTracks(playlist.id);
+                }}
               />
             ))}
           </>

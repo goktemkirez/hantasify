@@ -20,44 +20,62 @@ const useStyles = makeStyles({
 });
 
 export default function PlaylistCard(props) {
+  const {
+    name,
+    description,
+    img,
+    owner,
+    urlLink,
+    tracksUrl,
+    onDeleteClick,
+  } = props;
   const classes = useStyles();
   //   let history = useHistory();
 
   return (
     <Card className={classes.root}>
-      <CardActionArea
-        href={`http://localhost:3000/playlists/${props.tracksUrl}`}
-      >
+      <CardActionArea>
+        {/* bu target href falan bozuyor sitemi bunları kullanmamaya calısalım butona tıklıyorum altta bu çalışıyo her şey garip çalışmış oluyor amacını anlamadım neden ekledin ki  */}
         <CardMedia
           className={classes.media}
-          image={props.img}
+          image={img}
           title="Contemplative Reptile"
         />
         <CardContent>
           <Typography gutterBottom variant="h6" component="h2">
-            {props.name}
+            {name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {props.owner}
+            {owner}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button
-          size="small"
-          color="primary"
-          target="_blank"
-          href={props.urlLink}
-        >
+        <Button size="small" color="primary" target="_blank" href={urlLink}>
           Spotify
         </Button>
         <Button
           size="small"
           color="primary"
-          href={`http://localhost:3000/playlists/${props.tracksUrl}`}
+          href={`http://localhost:3000/playlists/${tracksUrl}`} //Bu href olayını kullanmıyoruz bunları history.pushla değiştirme şansın var mı
         >
           Discover
         </Button>
+
+        {/* Bunu buraya koyuyorum çünkü gidip öteki playlistleri harcamayalım şimdi silmeyelim yoktan yere :D */}
+        {name === "New Playlist" && (
+          <Button
+            size="small"
+            color="secondary"
+            onClick={() => {
+              if (onDeleteClick) {
+                onDeleteClick();
+              }
+            }}
+          >
+            Delete
+          </Button>
+        )}
       </CardActions>
     </Card>
   );
