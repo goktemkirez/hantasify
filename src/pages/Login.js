@@ -7,6 +7,7 @@ import {
   Button,
   Avatar,
   Typography,
+  Link,
 } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 
@@ -34,6 +35,7 @@ function Login() {
 
   return (
     <div>
+      {/* BARIŞ bunun daha mantıklı bir yolu var mı? Sadece bu sayfaya background vermek için bunu buldum */}
       <style>{"body { background-color: #EBECF0; }"}</style>
       <Container maxWidth="xl" className={classes.containerStyle}>
         {loading ? (
@@ -43,18 +45,31 @@ function Login() {
             </Skeleton>
           </Box>
         ) : (
-          <div className={classes.loginCard}>
-            <div className={classes.logoDiv}>
-              <Avatar
-                variant="rounded"
-                alt="Hantasify"
-                src="/static/images/avatar/3.jpg"
-              />
-              <Typography variant="h5">Hantasify</Typography>
+          <div className={classes.subContainer}>
+            <div className={classes.loginCard}>
+              <div className={classes.logoDiv}>
+                <Avatar
+                  variant="rounded"
+                  alt=" "
+                  src="/static/images/avatar/3.jpg"
+                  className={classes.img}
+                />
+                <Typography variant="h5">Hantasify</Typography>
+              </div>
+              <Button
+                variant="contained"
+                color="primary"
+                fullWidth={true}
+                className={classes.loginButton}
+              >
+                Log in with Spotify
+              </Button>
             </div>
-            <Button variant="contained" color="primary" fullWidth={true}>
-              Log in with Spotify
-            </Button>
+            <div className={classes.linkContainer}>
+              <Link href="#" className={classes.link}>
+                Privacy Policy
+              </Link>
+            </div>
           </div>
         )}
       </Container>
@@ -69,6 +84,10 @@ const useStyles = makeStyles({
     alignItems: "center",
     height: "100vh",
   },
+  subContainer: {
+    display: "flex",
+    flexDirection: "column",
+  },
   loginCard: {
     width: "530px",
     height: "260px",
@@ -80,11 +99,43 @@ const useStyles = makeStyles({
     padding: "40px",
     alignItems: "center",
   },
-  logoDiv: { display: "flex", flexDirection: "row" },
+  logoDiv: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+  },
   img: {
-    width: "40px",
+    marginRight: "16px",
+    borderRadius: "0",
+  },
+  hantasify: {
+    fontFamily: "Lato",
+    fontStyle: "normal",
+    fontWeight: "600",
+    fontSize: "22.13px",
+    lineHeight: "27px",
+    color: "#121212",
+  },
+  loginButton: {
     height: "40px",
-    backgroundColor: "#C4C4C4",
+    backgroundColor: "#8174F7",
+    textTransform: "none",
+  },
+  linkContainer: {
+    display: "flex",
+    justifyContent: "center",
+    marginTop: "19px", //BARIŞ burda butona :hover yazmak yerin theme devreyee giriyor değil mi?
+  },
+  link: {
+    //BARIŞ fontfamily yi Figmada yazan yaptım ama hiç benzemedi ordaki Link e
+    fontFamily: "Lato",
+    fontStyle: "normal",
+    fontWeight: "500",
+    fontSize: "16px",
+    lineHeight: "19px",
+    color: "#8174F7",
   },
 });
 
