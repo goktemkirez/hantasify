@@ -54,7 +54,7 @@ export default function SideBar(props) {
           />
           <Typography variant="h5">Hantasify</Typography>
         </div>
-        <IconButton
+        {/* <IconButton
           className={classes.drawerCloseButton}
           onClick={handleDrawerClose}
         >
@@ -63,7 +63,7 @@ export default function SideBar(props) {
           ) : (
             <ChevronRightIcon />
           )}
-        </IconButton>
+        </IconButton> */}
       </div>
       <div className={classes.listDiv}>
         <List className={classes.topList}>

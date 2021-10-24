@@ -4,6 +4,7 @@ import { Box, Button, Container, makeStyles } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 
 import PlaylistCard from "../../components/PlaylistCard";
+import PageWrapper from "../../components/PageWrapper/PageWrapper";
 
 function Playlists() {
   const classes = useStyles();
