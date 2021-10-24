@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import authAxios from "../components/axios";
+import authAxios from "../../components/axios";
 import { Box, Container, makeStyles } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 
-import ProfileCard from "../components/ProfileCard";
+import ProfileCard from "../../components/ProfileCard";
 
 function Profile() {
   const classes = useStyles();

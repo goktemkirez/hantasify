@@ -1,12 +1,12 @@
-import Nav from "./Nav";
-import Login from "./pages/Login";
-import PersistentDrawerLeft from "./Drawer";
-import { Route, BrowserRouter, Switch, Redirect } from "react-router-dom";
-import { ROUTES, routes } from "./routes";
 import { useState } from "react";
+import { Route, BrowserRouter, Switch, Redirect } from "react-router-dom";
+
+import SideBar from "./components/SideBar";
+
+import { ROUTES, routes } from "./routes";
 
 function App() {
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(true);
 
   const RenderedRoute = (props) => {
     const { path, component, name, isPublic } = props;
@@ -44,9 +44,6 @@ function App() {
           <Redirect to={isUserLoggedIn ? ROUTES.DASHBOARD : ROUTES.LOGIN} />
         </Switch>
       </BrowserRouter>
-      {/* <Nav /> */}
-      {/* <Login></Login> */}
-      {/* <PersistentDrawerLeft></PersistentDrawerLeft> */}
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import authAxios from "../components/axios";
+import authAxios from "../../components/axios";
 import {
   Box,
   Container,

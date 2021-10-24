@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import authAxios from "../components/axios";
+import authAxios from "../../components/axios";
 import { Box, Container, makeStyles } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 import { useParams } from "react-router-dom";
 
-import TrackCard from "../components/TrackCard";
+import TrackCard from "../../components/TrackCard";
 
 function PlaylistDetail() {
   const classes = useStyles();
