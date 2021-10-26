@@ -13,7 +13,22 @@ function Playlists() {
 
   useEffect(() => {
     getPlaylists();
+
+    getToken();
   }, []);
+
+  const getToken = () => {
+    // const query = new URLSearchParams(window.location.href);
+    // const token = query.get("access_token");
+    // localStorage.setItem("apiKey", token);
+    var hash = window.location.hash.substring(1);
+    var params = {};
+    hash.split("&").map((hk) => {
+      let temp = hk.split("=");
+      params[temp[0]] = temp[1];
+    });
+    localStorage.setItem("apiKey", params["access_token"]);
+  };
 
   const getPlaylists = async () => {
     try {

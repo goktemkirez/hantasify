@@ -33,6 +33,19 @@ function Login() {
     }
   };
 
+  const handleLogin = () => {
+    const authEndpoint = "https://accounts.spotify.com/authorize";
+    const redirectUri = "http://localhost:3000";
+    const clientId = "43c68cbe5b74480ead8fd16b6f9e30dc";
+
+    const scopes = ["user-read-email", "user-read-private"];
+
+    const loginUrl = `${authEndpoint}?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}&scope=${scopes.join(
+      "%20"
+    )}`;
+    window.location.replace(loginUrl);
+  };
+
   return (
     <div>
       {/* BARIŞ bunun daha mantıklı bir yolu var mı? Sadece bu sayfaya background vermek için bunu buldum */}
@@ -61,6 +74,7 @@ function Login() {
                 color="primary"
                 fullWidth={true}
                 className={classes.loginButton}
+                onClick={handleLogin}
               >
                 Log in with Spotify
               </Button>
@@ -83,6 +97,7 @@ const useStyles = makeStyles({
     justifyContent: "center",
     alignItems: "center",
     height: "100vh",
+    backgroundColor: "#EBECF0",
   },
   subContainer: {
     display: "flex",
