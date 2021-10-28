@@ -12,9 +12,9 @@ function Playlists() {
   const [playlistData, setPlaylistData] = useState([]);
 
   useEffect(() => {
-    getPlaylists();
-
     getToken();
+
+    getPlaylists();
   }, []);
 
   const getToken = () => {

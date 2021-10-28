@@ -6,17 +6,18 @@ import {
   Drawer,
   List,
   Typography,
-  IconButton,
   ListItem,
   ListItemIcon,
   ListItemText,
+  Container,
 } from "@material-ui/core";
-
+import { useHistory } from "react-router-dom";
 import {
-  ChevronLeft as ChevronLeftIcon,
-  ChevronRight as ChevronRightIcon,
-  Inbox as InboxIcon,
-  Mail as MailIcon,
+  HomeOutlined,
+  QueueMusicOutlined,
+  VpnKeyOutlined,
+  AccountCircleOutlined,
+  ExitToAppOutlined,
 } from "@material-ui/icons";
 
 import { useStyles } from "./SideBar.style";
@@ -25,6 +26,36 @@ export default function SideBar(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = useState(true);
+  let history = useHistory();
+  const itemsList = [
+    {
+      text: "Home",
+      icon: <HomeOutlined />,
+      onClick: () => history.push("/home"),
+    },
+    {
+      text: "Playlists",
+      icon: <QueueMusicOutlined />,
+      onClick: () => history.push("/playlists"),
+    },
+    {
+      text: "Login",
+      icon: <VpnKeyOutlined />,
+      onClick: () => history.push("/login"),
+    },
+  ];
+  const itemsListBottom = [
+    {
+      text: "Profile",
+      icon: <AccountCircleOutlined />,
+      onClick: () => history.push("/profile"),
+    },
+    {
+      text: "Log Out",
+      icon: <ExitToAppOutlined />,
+      onClick: () => history.push("/logout"),
+    },
+  ];
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -44,8 +75,8 @@ export default function SideBar(props) {
         paper: classes.drawerPaper,
       }}
     >
-      <div className={classes.drawerHeader}>
-        <div className={classes.logoDiv}>
+      <Container className={classes.drawerHeader}>
+        <Container className={classes.logoDiv}>
           <Avatar
             variant="rounded"
             alt=" "
@@ -53,7 +84,7 @@ export default function SideBar(props) {
             className={classes.img}
           />
           <Typography variant="h5">Hantasify</Typography>
-        </div>
+        </Container>
         {/* <IconButton
           className={classes.drawerCloseButton}
           onClick={handleDrawerClose}
@@ -64,29 +95,36 @@ export default function SideBar(props) {
             <ChevronRightIcon />
           )}
         </IconButton> */}
-      </div>
-      <div className={classes.listDiv}>
-        <List className={classes.topList}>
-          {["Playlists"].map((text, index) => (
-            <ListItem className={classes.topButtons} button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+      </Container>
+      <Container className={classes.listDiv}>
+        <List>
+          {itemsList.map((item, index) => {
+            const { text, icon, onClick } = item;
+            return (
+              <ListItem
+                className={classes.sidebarButton1}
+                button
+                onClick={onClick}
+                key={text}
+              >
+                {icon && <ListItemIcon>{icon}</ListItemIcon>}
+                <ListItemText primary={text} />
+              </ListItem>
+            );
+          })}
         </List>
-        <List className={classes.bottomList}>
-          {["Profile", "Log Out"].map((text, index) => (
-            <ListItem className={classes.drawerButton} button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+        <List>
+          {itemsListBottom.map((item, index) => {
+            const { text, icon, onClick } = item;
+            return (
+              <ListItem button onClick={onClick} key={text}>
+                {icon && <ListItemIcon>{icon}</ListItemIcon>}
+                <ListItemText primary={text} />
+              </ListItem>
+            );
+          })}
         </List>
-      </div>
+      </Container>
     </Drawer>
   );
 }

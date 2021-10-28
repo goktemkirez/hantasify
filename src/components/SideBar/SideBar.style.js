@@ -40,12 +40,12 @@ export const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
-    justifyContent: "flex-end",
+    justifyContent: "flex-start",
   },
   logoDiv: {
     display: "flex",
     flexDirection: "row",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignItems: "center",
     width: "100%",
     padding: 24,
@@ -53,14 +53,6 @@ export const useStyles = makeStyles((theme) => ({
   img: {
     marginRight: "16px",
     borderRadius: "0",
-  },
-  hantasify: {
-    fontFamily: "Lato",
-    fontStyle: "normal",
-    fontWeight: "600",
-    fontSize: "22.13px",
-    lineHeight: "27px",
-    color: "#121212",
   },
   drawerCloseButton: {
     position: "absolute",
@@ -86,25 +78,16 @@ export const useStyles = makeStyles((theme) => ({
     }),
     marginLeft: 0,
   },
-  topList: {
-    paddingRight: 24,
-    paddingLeft: 24,
-  },
-  topButtons: {
-    backgroundColor: "#EBECF0",
-    borderRadius: 3,
-  },
-  bottomList: {
-    paddingRight: 24,
-    paddingLeft: 24,
-  },
-  drawerButton: {
-    width: "100%",
-  },
   listDiv: {
     display: "flex",
     flexDirection: "column",
     height: "100%",
     justifyContent: "space-between",
+  },
+  sidebarButton1: {
+    backgroundColor: "#EBECF0",
+    borderRadius: 3,
+    width: "100%",
+    marginTop: 24,
   },
 }));
