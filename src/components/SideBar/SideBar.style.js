@@ -35,9 +35,10 @@ export const useStyles = makeStyles((theme) => ({
     backgroundColor: "#F4F5F7",
   },
   drawerHeader: {
+    width: "100%",
     display: "flex",
     alignItems: "center",
-    padding: theme.spacing(0, 1),
+    padding: 0,
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
     justifyContent: "flex-start",

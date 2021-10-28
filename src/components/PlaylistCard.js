@@ -20,15 +20,7 @@ const useStyles = makeStyles({
 });
 
 export default function PlaylistCard(props) {
-  const {
-    name,
-    description,
-    img,
-    owner,
-    urlLink,
-    tracksUrl,
-    onDeleteClick,
-  } = props;
+  const { name, img, owner, urlLink, tracksUrl, onDeleteClick } = props;
   const classes = useStyles();
   //   let history = useHistory();
 

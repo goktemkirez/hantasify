@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import authAxios from "../../components/axios";
-import { Box, Container, makeStyles } from "@material-ui/core";
+import { Box, Container } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 import { useParams } from "react-router-dom";
 
 import TrackCard from "../../components/TrackCard";
+import { useStyles } from "./PlaylistDetail.style";
 
 function PlaylistDetail() {
   const classes = useStyles();
@@ -59,20 +60,5 @@ function PlaylistDetail() {
     </div>
   );
 }
-
-const useStyles = makeStyles({
-  containerStyle: {
-    padding: 10,
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
-  },
-  boxStyle: {
-    display: "flex",
-    flexDirection: "column",
-    backgroundColor: "#000000",
-    color: "#4DDA63",
-  },
-});
 
 export default PlaylistDetail;

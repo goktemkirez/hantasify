@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import authAxios from "../../components/axios";
-import { Box, Container, makeStyles } from "@material-ui/core";
+import { Box, Container } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 
 import ProfileCard from "../../components/ProfileCard";
+import { useStyles } from "./Profile.style";
 
 function Profile() {
   const classes = useStyles();
@@ -55,17 +56,5 @@ function Profile() {
     </div>
   );
 }
-
-const useStyles = makeStyles({
-  containerStyle: {
-    padding: 10,
-  },
-  boxStyle: {
-    display: "flex",
-    flexDirection: "column",
-    backgroundColor: "#000000",
-    color: "#4DDA63",
-  },
-});
 
 export default Profile;

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import authAxios from "../../components/axios";
-import { Box, Button, Container, makeStyles } from "@material-ui/core";
+import { Box, Button, Container, Typography } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
+import { AddOutlined } from "@material-ui/icons";
 
 import PlaylistCard from "../../components/PlaylistCard";
-import PageWrapper from "../../components/PageWrapper/PageWrapper";
+import { useStyles } from "./Playlists.style";
 
 function Playlists() {
   const classes = useStyles();
@@ -81,14 +82,20 @@ function Playlists() {
   };
 
   return (
-    <div>
-      <Button variant="contained" color="default" onClick={createPlaylist}>
-        Yeni Playlist
-      </Button>
-      <Button variant="contained" color="secondary" onClick={removeTracks}>
-        Hantasify Test'i Boşalt
-      </Button>
-      <Container maxWidth="lg" className={classes.containerStyle}>
+    <Box>
+      <Box className={classes.topBox}>
+        <Typography variant="h5">Playlists</Typography>
+        <Button
+          variant="contained"
+          color="secondary"
+          className={classes.button}
+          startIcon={<AddOutlined />}
+          onClick={createPlaylist}
+        >
+          Create Playlist
+        </Button>
+      </Box>
+      <Container maxWidth="xl" className={classes.containerStyle}>
         {loading ? (
           <Box>
             <Skeleton animation="pulse" width="240">
@@ -113,23 +120,8 @@ function Playlists() {
           </>
         )}
       </Container>
-    </div>
+    </Box>
   );
 }
-
-const useStyles = makeStyles({
-  containerStyle: {
-    padding: 10,
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
-  },
-  boxStyle: {
-    display: "flex",
-    flexDirection: "column",
-    backgroundColor: "#000000",
-    color: "#4DDA63",
-  },
-});
 
 export default Playlists;
