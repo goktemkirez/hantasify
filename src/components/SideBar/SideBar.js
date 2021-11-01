@@ -21,6 +21,7 @@ import {
 } from "@material-ui/icons";
 
 import { useStyles } from "./SideBar.style";
+import { ROUTES } from "../../routes";
 
 export default function SideBar(props) {
   const classes = useStyles();
@@ -31,29 +32,29 @@ export default function SideBar(props) {
     {
       text: "Home",
       icon: <HomeOutlined />,
-      onClick: () => history.push("/home"),
+      onClick: () => history.push(ROUTES.DASHBOARD),
     },
     {
       text: "Playlists",
       icon: <QueueMusicOutlined />,
-      onClick: () => history.push("/playlists"),
+      onClick: () => history.push(ROUTES.PLAYLISTS),
     },
     {
       text: "Login",
       icon: <VpnKeyOutlined />,
-      onClick: () => history.push("/login"),
+      onClick: () => history.push(ROUTES.LOGIN),
     },
   ];
   const itemsListBottom = [
     {
       text: "Profile",
       icon: <AccountCircleOutlined />,
-      onClick: () => history.push("/profile"),
+      onClick: () => history.push(ROUTES.PROFILE),
     },
     {
       text: "Log Out",
       icon: <ExitToAppOutlined />,
-      onClick: () => history.push("/logout"),
+      onClick: () => alert("Logged Out"),
     },
   ];
 
