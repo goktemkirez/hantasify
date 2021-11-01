@@ -7,27 +7,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 // import { useHistory } from "react-router-dom";
 
-const useStyles = makeStyles({
-  root: {
-    width: 150,
-    margin: 10,
-  },
-  card: {
-    height: 250,
-  },
-  media: {
-    height: 150,
-  },
-  content: {
-    width: 120,
-    height: 70,
-    wordWrap: "break-word",
-  },
-  contentTitle: {},
-  contentBody: {
-    bottom: 0,
-  },
-});
+import { useStyles } from "./TrackCard.style";
 
 export default function MediaCard(props) {
   const classes = useStyles();

@@ -4,7 +4,7 @@ import { Box, Button, Container, Typography } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 import { AddOutlined } from "@material-ui/icons";
 
-import PlaylistCard from "../../components/PlaylistCard";
+import PlaylistCard from "../../components/PlaylistCard/PlaylistCard";
 import { useStyles } from "./Playlists.style";
 
 function Playlists() {

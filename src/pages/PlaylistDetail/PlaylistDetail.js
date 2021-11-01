@@ -4,7 +4,7 @@ import { Box, Container } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 import { useParams } from "react-router-dom";
 
-import TrackCard from "../../components/TrackCard";
+import TrackCard from "../../components/TrackCard/TrackCard";
 import { useStyles } from "./PlaylistDetail.style";
 
 function PlaylistDetail() {

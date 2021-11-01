@@ -3,7 +3,7 @@ import authAxios from "../../components/axios";
 import { Box, Container } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 
-import ProfileCard from "../../components/ProfileCard";
+import ProfileCard from "../../components/ProfileCard/ProfileCard";
 import { useStyles } from "./Profile.style";
 
 function Profile() {

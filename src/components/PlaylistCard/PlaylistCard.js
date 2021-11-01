@@ -9,15 +9,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 // import { useHistory } from "react-router-dom";
 
-const useStyles = makeStyles({
-  root: {
-    width: 350,
-    margin: 10,
-  },
-  media: {
-    height: 350,
-  },
-});
+import { useStyles } from "./PlaylistCard.style";
 
 export default function PlaylistCard(props) {
   const { name, img, owner, urlLink, tracksUrl, onDeleteClick } = props;
