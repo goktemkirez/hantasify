@@ -6,6 +6,7 @@ import { AddOutlined } from "@material-ui/icons";
 
 import PlaylistCard from "../../components/PlaylistCard/PlaylistCard";
 import { useStyles } from "./Playlists.style";
+import { setAuthorizationToken } from "../../components/axios";
 
 function Playlists() {
   const classes = useStyles();
@@ -29,6 +30,7 @@ function Playlists() {
       params[temp[0]] = temp[1];
     });
     localStorage.setItem("apiKey", params["access_token"]);
+    setAuthorizationToken(localStorage.getItem("apiKey"));
   };
 
   const getPlaylists = async () => {

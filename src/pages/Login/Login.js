@@ -11,7 +11,12 @@ function Login() {
     const redirectUri = "http://localhost:3000";
     const clientId = "43c68cbe5b74480ead8fd16b6f9e30dc";
 
-    const scopes = ["user-read-email", "user-read-private"];
+    const scopes = [
+      "user-read-email",
+      "user-read-private",
+      "playlist-read-private",
+      "playlist-modify-private",
+    ];
 
     const loginUrl = `${authEndpoint}?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}&scope=${scopes.join(
       "%20"
