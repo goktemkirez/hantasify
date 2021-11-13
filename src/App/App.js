@@ -8,10 +8,18 @@ import { ROUTES, routes } from "../routes";
 
 import { useStyles } from "./App.style";
 import PageWrapper from "../components/PageWrapper";
+import { setAuthorizationToken } from "../components/axios";
 
 function App() {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(true);
   const classes = useStyles();
+  const authToken = localStorage.getItem("apiKey");
+
+  if (!!authToken) {
+    setAuthorizationToken(authToken);
+    // setIsUserLoggedIn(true);
+    // BARIŞ loggedin true yapınca Too many re-renders. React limits the number of renders to prevent an infinite loop.
+  }
 
   const RenderedRoute = (props) => {
     const { path, component, name, isPublic } = props;
@@ -46,6 +54,7 @@ function App() {
           {routes.map((route) => {
             return (
               <RenderedRoute
+                key={route.path}
                 exact
                 path={route.path}
                 component={route.component}

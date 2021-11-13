@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import authAxios from "../../components/axios";
+import authAxios, { setAuthorizationToken } from "../../components/axios";
 import { Box, Button, Container, Typography } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 import { AddOutlined } from "@material-ui/icons";
 
 import PlaylistCard from "../../components/PlaylistCard/PlaylistCard";
 import { useStyles } from "./Playlists.style";
-import { setAuthorizationToken } from "../../components/axios";
 
 function Playlists() {
   const classes = useStyles();
@@ -29,8 +28,11 @@ function Playlists() {
       let temp = hk.split("=");
       params[temp[0]] = temp[1];
     });
-    localStorage.setItem("apiKey", params["access_token"]);
-    setAuthorizationToken(localStorage.getItem("apiKey"));
+    if (params["access_token"]) {
+      localStorage.setItem("apiKey", params["access_token"]);
+      // setAuthorizationToken(localStorage.getItem("apiKey"));
+      window.location.replace("http://localhost:3000"); //Arama çubuğunda key vardı geçici böyle yaptım
+    }
   };
 
   const getPlaylists = async () => {
