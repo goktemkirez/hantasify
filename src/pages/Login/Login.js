@@ -8,7 +8,7 @@ function Login() {
 
   const handleLogin = () => {
     const authEndpoint = "https://accounts.spotify.com/authorize";
-    const redirectUri = "https://hantasify.netlify.app/";
+    const redirectUri = "https://hantasify.netlify.app";
     const clientId = "43c68cbe5b74480ead8fd16b6f9e30dc";
 
     const scopes = [

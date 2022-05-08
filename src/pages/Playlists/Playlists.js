@@ -32,7 +32,7 @@ function Playlists() {
     if (params["access_token"]) {
       localStorage.setItem("apiKey", params["access_token"]);
       // setAuthorizationToken(localStorage.getItem("apiKey"));
-      window.location.replace("http://localhost:3000"); //Arama çubuğunda key vardı geçici böyle yaptım
+      window.location.replace("https://hantasify.netlify.app"); //Arama çubuğunda key vardı geçici böyle yaptım
     }
   };
 

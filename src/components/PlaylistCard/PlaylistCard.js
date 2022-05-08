@@ -41,7 +41,7 @@ export default function PlaylistCard(props) {
         <Button
           size="small"
           color="primary"
-          href={`http://localhost:3000/playlists/${tracksUrl}`} //Bu href olayını kullanmıyoruz bunları history.pushla değiştirme şansın var mı
+          href={`https://hantasify.netlify.app/playlists/${tracksUrl}`} //Bu href olayını kullanmıyoruz bunları history.pushla değiştirme şansın var mı
         >
           Discover
         </Button>
