@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Route, BrowserRouter, Switch, Redirect } from "react-router-dom";
 import { Box } from "@material-ui/core";
 
@@ -15,6 +15,18 @@ function App() {
   const classes = useStyles();
   const authToken = localStorage.getItem("apiKey");
 
+  useEffect(() => {
+    const loginControl = async () => {
+      if (!!authToken) {
+        setAuthorizationToken(authToken);
+        setIsUserLoggedIn(true);
+      } else {
+        setIsUserLoggedIn(false);
+      }
+    };
+    loginControl();
+  }, [authToken]);
+
   if (!!authToken) {
     setAuthorizationToken(authToken);
     // setIsUserLoggedIn(true);
@@ -27,6 +39,7 @@ function App() {
 
     return (
       <Route
+        name={name}
         path={path}
         exact
         render={(props) => {

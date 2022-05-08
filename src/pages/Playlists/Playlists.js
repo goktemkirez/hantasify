@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import authAxios, { setAuthorizationToken } from "../../components/axios";
+import authAxios from "../../components/axios";
 import { Box, Button, Container, Typography } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 import { AddOutlined } from "@material-ui/icons";
@@ -27,6 +27,7 @@ function Playlists() {
     hash.split("&").map((hk) => {
       let temp = hk.split("=");
       params[temp[0]] = temp[1];
+      return "";
     });
     if (params["access_token"]) {
       localStorage.setItem("apiKey", params["access_token"]);

@@ -1,8 +1,8 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Avatar,
-  useTheme,
+  // useTheme,
   Drawer,
   List,
   Typography,
@@ -25,9 +25,14 @@ import { ROUTES } from "../../routes";
 
 export default function SideBar(props) {
   const classes = useStyles();
-  const theme = useTheme();
+  // const theme = useTheme();
   const [open, setOpen] = useState(true);
   let history = useHistory();
+
+  useEffect(() => {
+    handleDrawerOpen();
+  }, []);
+
   const itemsList = [
     {
       text: "Home",
@@ -62,9 +67,9 @@ export default function SideBar(props) {
     setOpen(true);
   };
 
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+  // const handleDrawerClose = () => {
+  //   setOpen(false);
+  // };
 
   return (
     <Drawer

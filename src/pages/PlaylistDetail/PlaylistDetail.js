@@ -14,25 +14,24 @@ function PlaylistDetail() {
   const { id } = useParams();
 
   useEffect(() => {
+    const getPlaylistDetail = async () => {
+      try {
+        setLoading(true);
+
+        const result = await authAxios.get(`/playlists/${id}`);
+        console.log(result.data?.tracks?.items);
+        setPlaylistDetailData(result.data?.tracks?.items);
+        console.log(playlistDetailData);
+      } catch (error) {
+        console.log("error", error);
+      } finally {
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
+      }
+    };
     getPlaylistDetail();
-  }, []);
-
-  const getPlaylistDetail = async () => {
-    try {
-      setLoading(true);
-
-      const result = await authAxios.get(`/playlists/${id}`);
-      console.log(result.data?.tracks?.items);
-      setPlaylistDetailData(result.data?.tracks?.items);
-      console.log(playlistDetailData);
-    } catch (error) {
-      console.log("error", error);
-    } finally {
-      setTimeout(() => {
-        setLoading(false);
-      }, 1000);
-    }
-  };
+  }, [id, playlistDetailData]);
 
   return (
     <div>
