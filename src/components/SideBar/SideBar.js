@@ -59,9 +59,14 @@ export default function SideBar(props) {
     {
       text: "Log Out",
       icon: <ExitToAppOutlined />,
-      onClick: () => alert("Logged Out"),
+      onClick: () => logOut(),
     },
   ];
+
+  const logOut = () => {
+    localStorage.removeItem("apiKey");
+    history.push(ROUTES.LOGIN);
+  }
 
   const handleDrawerOpen = () => {
     setOpen(true);

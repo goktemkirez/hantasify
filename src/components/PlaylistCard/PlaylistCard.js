@@ -7,19 +7,19 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { useStyles } from "./PlaylistCard.style";
+import { ROUTES } from "../../routes";
 
 export default function PlaylistCard(props) {
   const { name, img, owner, urlLink, tracksUrl, onDeleteClick } = props;
   const classes = useStyles();
-  //   let history = useHistory();
+  let history = useHistory();
 
   return (
     <Card className={classes.root}>
       <CardActionArea>
-        {/* bu target href falan bozuyor sitemi bunları kullanmamaya calısalım butona tıklıyorum altta bu çalışıyo her şey garip çalışmış oluyor amacını anlamadım neden ekledin ki  */}
         <CardMedia
           className={classes.media}
           image={img}
@@ -41,7 +41,7 @@ export default function PlaylistCard(props) {
         <Button
           size="small"
           color="primary"
-          href={`https://hantasify.netlify.app/playlists/${tracksUrl}`} //Bu href olayını kullanmıyoruz bunları history.pushla değiştirme şansın var mı
+          onClick={() => history.push(ROUTES.PLAYLISTS + '/' + tracksUrl)}
         >
           Discover
         </Button>

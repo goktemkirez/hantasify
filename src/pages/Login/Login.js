@@ -8,7 +8,7 @@ function Login() {
 
   const handleLogin = () => {
     const authEndpoint = "https://accounts.spotify.com/authorize";
-    const redirectUri = "https://hantasify.netlify.app";
+    const redirectUri = window.location.origin;
     const clientId = "43c68cbe5b74480ead8fd16b6f9e30dc";
 
     const scopes = [
@@ -26,7 +26,6 @@ function Login() {
 
   return (
     <Container className={classes.containerStyle}>
-      {/* BARIŞ bunun daha mantıklı bir yolu var mı? Sadece bu sayfaya background vermek için bunu buldum */}
       <style>{"body { background-color: #EBECF0; }"}</style>
       <Container className={classes.subContainer}>
         <Container className={classes.loginCard}>

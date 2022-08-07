@@ -3,22 +3,25 @@ import authAxios from "../../components/axios";
 import { Box, Button, Container, Typography } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 import { AddOutlined } from "@material-ui/icons";
+import { useHistory } from "react-router-dom";
 
 import PlaylistCard from "../../components/PlaylistCard/PlaylistCard";
 import { useStyles } from "./Playlists.style";
+import { ROUTES } from "../../routes";
 
 function Playlists() {
   const classes = useStyles();
   const [loading, setLoading] = useState(false);
   const [playlistData, setPlaylistData] = useState([]);
+  let history = useHistory();
 
   useEffect(() => {
     getToken();
 
-    getPlaylists();
+    getPlaylists();// eslint-disable-next-line
   }, []);
 
-  const getToken = () => {
+  const getToken = async () => {
     // const query = new URLSearchParams(window.location.href);
     // const token = query.get("access_token");
     // localStorage.setItem("apiKey", token);
@@ -30,17 +33,18 @@ function Playlists() {
       return "";
     });
     if (params["access_token"]) {
-      localStorage.setItem("apiKey", params["access_token"]);
+      await localStorage.setItem("apiKey", params["access_token"]);
       // setAuthorizationToken(localStorage.getItem("apiKey"));
-      window.location.replace("https://hantasify.netlify.app"); //Arama çubuğunda key vardı geçici böyle yaptım
+      history.push(ROUTES.DASHBOARD);
     }
   };
 
   const getPlaylists = async () => {
     try {
       setLoading(true);
-
+      
       const result = await authAxios.get(`/me/playlists`);
+
       console.log(result.data.items);
       setPlaylistData(result.data.items);
     } catch (error) {
@@ -112,8 +116,8 @@ function Playlists() {
             {playlistData.map((playlist) => (
               <PlaylistCard
                 key={playlist.id}
-                owner={playlist?.owner?.display_name} // Burda neden template literal yaptın direk bu şekilde de geçebilrisin propları
-                img={playlist?.images[0]?.url} // Olaylara hep ben bununla bişey yaparım ilerde diye bakıyom :D
+                owner={playlist?.owner?.display_name}
+                img={playlist?.images[0]?.url}
                 name={playlist?.name}
                 urlLink={playlist?.external_urls?.spotify}
                 tracksUrl={playlist.id}

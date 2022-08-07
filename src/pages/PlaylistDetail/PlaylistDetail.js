@@ -21,7 +21,6 @@ function PlaylistDetail() {
         const result = await authAxios.get(`/playlists/${id}`);
         console.log(result.data?.tracks?.items);
         setPlaylistDetailData(result.data?.tracks?.items);
-        console.log(playlistDetailData);
       } catch (error) {
         console.log("error", error);
       } finally {
@@ -31,7 +30,7 @@ function PlaylistDetail() {
       }
     };
     getPlaylistDetail();
-  }, [id, playlistDetailData]);
+  }, [id]);
 
   return (
     <div>
